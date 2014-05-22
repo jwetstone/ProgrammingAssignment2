@@ -14,7 +14,7 @@ makeCacheMatrix<-function(x){ #x is an invertible matrix
   get <- function() x #returns matrix x  
   
   
-  setInverse <- function(){ #gets inverse of x, and sets to m
+  setInverse <- function(){ #gets inverse of x, and sets m to result
     m <<- solve(x)   
   } 
   
@@ -27,11 +27,11 @@ makeCacheMatrix<-function(x){ #x is an invertible matrix
   
 } 
 
-cacheSolve<-function(x,...){
+cacheSolve<-function(x,...){#Given a makeCacheMatrix object, will return
+                            #inverse of the matrix
   
-  m <- x$getInverse()
-  print(nrow(m))
-  print(ncol(m))
+  m <- x$getInverse() #Pulling inverse matrix (if known)
+                          #or 2x1 default matrix
   
   if(nrow(m)==ncol(m)){ #i.e. inverse matrix is already known
     message("Getting cached data...")
